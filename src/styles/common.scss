@@ -1,8 +1,8 @@
-@import 'fonts.scss';
+@import 'font.scss';
 
 :root {
   // --body-color: #ebf0ff;
-  --body-color: #F5F5F5;;
+  --body-color: #f4f7fe;
   --sidebar-color: #548CA8;
   --table-color:#6D9886;
   --table-color:#548CA8;
@@ -35,7 +35,9 @@ body.dark {
 	padding: 0;
 	box-sizing: border-box;
 	// font-family: "Poppins", sans-serif;
-  font-family: "Roboto";
+  // font-family: "Roboto";
+  font-family: 'lato';
+font-style: normal;
 }
 body {
 	min-height: 100%;
@@ -71,9 +73,73 @@ body {
   cursor:pointer;
 }
 
+.modal-content{
+  border-radius:40px !important;
+}
+
 .display-none{
   display:none;
 }
+
+.btn-normal{
+  display:inline-block;
+  padding:10px 30px;
+  outline:none;
+  border:2px solid #6f7ced;
+  border-radius:15px;
+  margin-right:10px;
+  color:white;
+  background-color:#6f7ced;
+}  
+
+.card-container{
+  border:1px solid #eeeff1;
+  display:flex;
+  flex-wrap: wrap;
+ 
+  flex-grow:1;
+  gap:20px;
+   padding:50px;
+  border-radius:15px ;
+
+  @media(max-width:1203px){
+    justify-content:center;
+  }
+  
+}
+.table th{
+  border-bottom:1px solid #eeeff1;
+  padding:20px;
+  font-weight: bold;
+}
+table{
+  margin-bottom:0px!important;
+  padding-bottom: 0px!important;
+}
+.table td{
+  
+  padding:20px;
+}
+.table>tbody> tr:hover{
+  background:#CDCDC5;
+}
+.table>tbody>tr:nth-of-type(even)>*{
+  background-color: var(--body-color);
+}
+
+.table>tbody>tr:last-child>td{
+ border:none;
+ 
+}
+
+
+.table-container{
+  border:1px solid #eeeff1;
+  cursor:pointer;
+  
+  border-radius:15px ;
+}
+
 
 .table-local {
   border-collapse: collapse;
@@ -140,9 +206,7 @@ body {
   border-radius:5px;
 }
 
-.review-options{
- 
-}
+
 .w-200{
   width:200px;
   display:flex;

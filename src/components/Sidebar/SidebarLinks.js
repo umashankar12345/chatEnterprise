@@ -3,7 +3,53 @@ import {GrMultiple} from "react-icons/gr"
 import {FaUsers,FaUserSecret,FaChalkboardTeacher,FaFistRaised,FaTeamspeak} from "react-icons/fa"
 import {BsLaptopFill,BsStack,BsFileEarmarkSpreadsheetFill} from "react-icons/bs"
 import {MdFilterListAlt,MdDns,MdOutlineSchedule,MdSettings,MdOutlineQueryStats} from "react-icons/md"
+import {AiOutlineHome,AiOutlineSetting} from "react-icons/ai"
 
+const NewYorkTIme=()=>{
+  return (
+    <img src={require("../../assets/icons/newyork.png")}/>
+  )
+}
+
+const MyTransaction= ()=>{
+  return (
+    <img src={require("../../assets/icons/transaction.png")} className="me-2"/>
+  )
+}
+
+
+export const enterpriseLinks= [
+  {
+    path: "/enterprise/Home",
+    name: "Home",
+    Icon: AiOutlineHome,
+  },
+  // {
+  //   path: "/profile",
+  //   name: "Profile",
+  //   icon: "nc/icon nc/single/02",
+  //   component: UpdateUserProfile,
+  //   layout: "/admin",
+  // },
+  {
+    path: "/enterprise/mytransactions",
+    name: "My Transactions",
+    Icon: MyTransaction,
+  },
+  {
+    path: "/enterprise/settings",
+    name: "Settings",
+    Icon: AiOutlineSetting,
+  },
+  {
+    path: "/enterprise/newyorktime",
+    name: "NewYork Time",
+    Icon: NewYorkTIme,
+    
+  },
+  
+ 
+];
 
 export const adminLinks = [
   {
@@ -162,33 +208,7 @@ export const superAdminLinks = [
    
   ]
 
-  export const authorLinks= [
-    {
-      path: "/author/SubmitManuscript",
-      name: "New Manuscript",
-      Icon: BsStack,
-    },
-    // {
-    //   path: "/profile",
-    //   name: "Profile",
-    //   icon: "nc/icon nc/single/02",
-    //   component: UpdateUserProfile,
-    //   layout: "/admin",
-    // },
-    {
-      path: "/author/revisions",
-      name: "Feedbacks",
-      Icon: MdDns,
-    },
-    // {
-    //   path: "/author/completed",
-    //   name: "Completed",
-    //   Icon: MdDns,
-      
-    // },
-    
-   
-  ];
+  
 
   export const pcPmLinks = [
     {

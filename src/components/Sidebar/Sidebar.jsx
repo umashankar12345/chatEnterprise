@@ -9,13 +9,13 @@ import {
   superAdminLinks,
   pcPmLinks,
   teamLeadLinks,
-  authorLinks,
   reviewerLinks,
+  enterpriseLinks,
 } from "./SidebarLinks";
 
 function Sidebar({ hideSidebar, setHideSidebar }) {
   const { activeSidebar } = useSelector((state) => state.appInfo);
-  const [sidebarLinks, setSidebarLinks] = useState(authorLinks);
+  const [sidebarLinks, setSidebarLinks] = useState(enterpriseLinks);
   const dispatch = useDispatch();
   console.log(sidebarLinks);
   const [activeLink, setActiveLink] = useState("");
@@ -45,11 +45,9 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
     if (activeSidebar === "teamLead") {
       setSidebarLinks(teamLeadLinks);
     }
-    if (activeSidebar === "author") {
-      setSidebarLinks(authorLinks);
-    }
-    if (activeSidebar === "reviewer") {
-      setSidebarLinks(reviewerLinks);
+
+    if (activeSidebar === "enterprise") {
+      setSidebarLinks(enterpriseLinks);
     }
   };
   useEffect(() => {
@@ -68,8 +66,24 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
               <img
                 src={require("../../assets/images/cloud-icon.png")}
                 alt="logo"
+                style={{ visibility: "hidden" }}
                 className="logo"
               />
+            </div>
+
+            <div className="c-transaction">
+              <span className="ms-1">Create Transaction</span>
+
+              <div>
+                <img
+                  src={require("../../assets/icons/plus.png")}
+                  alt="logo"
+                  className="me-1"
+                />
+              </div>
+            </div>
+            <div className="d-flex justify-content-center">
+              <div className="horizontal-rule"></div>
             </div>
 
             <div className="sidebar-inner-container">
@@ -87,8 +101,8 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
                         state={{ headerTitle: item.name }}
                         onClick={() => setHideSidebar(true)}
                       >
-                        <item.Icon className="me-1 icons" />
-                        {item.name}
+                        <item.Icon className=" icons" />
+                        <span className="ms-2">{item.name}</span>
                       </Link>
                     </div>
                   );
@@ -112,27 +126,48 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
   );
 }
 const Navigation = Styled.div`
+ position:fixed;
+ 
+ .c-transaction{
+  width:220px;
+  display:flex;
+  text-transform:capitalize;
+  margin-left:10px;
+  background:var(--body-color);
+  height:80px;
+  gap:10px;
+  cursor:pointer;
+  align-items:center;
+border-radius: 8px;
+margin-bottom:30px;
+
+ }
  .navigation{
   position:fixed;
-  /* min-height:100vh; */
-  
+  height:100vh;
   top: 0;
   bottom: 0;
   //min-height:100vh;
  width:16.5rem;
- background-color:var(--sidebar-color);
+ /* background-color:var(--sidebar-color);
+ background-image:url("https://cdn.pixabay.com/photo/2016/11/21/17/59/blackboard-1846865_960_720.jpg");
+ background-size:cover; */
+ /* Created with https://www.css-gradient.com */
+ background: rgb(23,33,107);
+background: linear-gradient(162deg, rgba(23,33,107,0.9976365546218487) 0%, rgba(53,17,138,1) 34%, rgba(8,105,172,0.7847514005602241) 67%);
+ /* background-color: #d8bd48;
+background-image: linear-gradient(327deg, #d8bd48 0%, #16A085 100%); */
+
 
  color:var(--textcolor); 
  text-transform:uppercase;
  font-size:18px;
  display:flex;
  justify-content:center;
-
+ background:#fff;
+ border-right: 1px solid rgba(28, 43, 72, 0.1);
+border-radius: 20px 0px 0px 0px;
  
- -webkit-box-shadow: 4px 3px 15px -4px rgba(0,0,0,0.75);
--moz-box-shadow: 4px 3px 15px -4px rgba(0,0,0,0.75);
-box-shadow: 4px 3px 15px -4px rgba(0,0,0,0.75);
-z-index:1124;
 
  }
 
@@ -144,9 +179,9 @@ z-index:1124;
  }
   
 
-/* @media(max-width:600px){
+@media(max-width:600px){
   transform:translate(-100%);
-} */
+}
  
 
  
@@ -181,26 +216,30 @@ z-index:1124;
     width:100%;
     
     
-    color:var(--sidebar);
-    overflow-y:none;
-    height:calc(100% - 120px);
+    color:#000;
+    overflow-y:auto;
+    height:calc(100% - 220px);
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: 1px;  /* Firefox */
- 
+  
 }
 
 .sidebar-inner-container::-webkit-scrollbar { 
 width:5px;
+left:-5px;
   
 }
 .sidebar-inner-container::-webkit-scrollbar-thumb {
-  background: #888;
   background: #f1f1f1;
+  background: #888;
 
+  
 }
 .sidebar-inner-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  
   background: #888;
+  background: #f1f1f1;
+ 
 
 }
 
@@ -208,13 +247,14 @@ width:5px;
 .sidebar-inner-link{
     text-decoration:none;
     /* color:var(--sidebar); */
-    color:#f0f7ee;
+    color:#000;
     cursor:pointer;
     display:block;
     width:100%;
-    margin:1rem 0;
-    padding:1rem 2rem;
-    font-weight:300;
+    margin:1rem 0rem ;
+   
+    padding:1rem 1rem;
+    
    // background-color:transparent;
     /* transform: skew(-10deg); 
     background: rgba(255, 255, 255, 0.2);
@@ -236,16 +276,16 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
   background: rgba(255, 255, 255, 0.2);
 } */
 
+
+
 .active{
   /* color:var(--header-color);
   
   background-color:var(--primary-color); */
-  color:#000;
-  background-color:#fff;
-  border-radius:20px;
-  -webkit-box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
-box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
+  color:#fff;
+  background-color:#6F7CED;
+
+  border-radius: 20px;
 
 }
 
@@ -266,14 +306,16 @@ opacity:0.8;
 .btn-logout{
   padding:10px 25px;
   cursor:pointer;
-  background-color:#22A39F;
-  border:none;
-  border-radius:5px;
-  color:white;
+   color:#fff;
+  background-color:#6F7CED;
+   border:none;
+  border-radius: 12px;
   margin-bottom:20px;
-  -webkit-box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
-box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
+}
+
+.btn-logout:hover{
+  opacity:0.8 ;
+
 }
 
 .sidebar-inner-link:hover .icons{
@@ -282,13 +324,19 @@ box-shadow: 0px 7px 8px -2px rgba(0,0,0,0.75);
 
 }
 
+.horizontal-rule{
+  background-color:grey;
+  width:200px;
+  height:1px;
+  opacity:0.3;
+}
+
 @keyframes iconsmove {
   0%   {transform:rotate(10deg)}
   20%   {transform:rotate(20deg)}
   20%   {transform:rotate(10deg)}
   100% {transform:rotate(0deg)}
 }
-
 
 `;
 export default Sidebar;

@@ -156,7 +156,9 @@ function LoginForm() {
           <div>
             <a className="forget-pass">Forgot password?</a>
           </div>
-          <button className="cta-btn">Log In</button>
+          <button className="cta-btn" onClick={() => navigate("/enterprise")}>
+            Log In
+          </button>
           <div className="text-center">
             don't have an account Register here?
           </div>

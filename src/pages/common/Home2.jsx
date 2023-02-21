@@ -23,16 +23,20 @@ function Home() {
 
 export default Home;
 const Wrapper = Styled.div`
+    
 
     .outlet-container{
        display:flex;
        width:100%;
+       
+
     }
     .outlet-partial{
       margin-top:100px;
       margin-left:17rem;
       margin-right:1.5rem;
       width:calc(100% - 264px);
+
       /* overflow:auto; */
       
     }
