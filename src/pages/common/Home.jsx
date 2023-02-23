@@ -15,19 +15,25 @@ function Home() {
   return (
     <Wrapper>
       <Navbar collapseOnSelect expand="lg">
-        <Navbar.Brand href="#home" style={{ color: "#4D5BD0" }}>
+        <Navbar.Brand
+          onClick={() => navigate("/mainhome")}
+          style={{ color: "#4D5BD0", cursor: "pointer" }}
+        >
           <img
             src={require("../../assets/icons/logo.png")}
             alt="logo"
-            className="logo"
+            className="logo ms-3 me-3"
           />
-          Transaction
+          <span className=" fw-bold text-primary h5">BeTru.ai</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link
-              onClick={() => setActiveLink("home")}
+            {/* <Nav.Link
+              onClick={() => {
+                navigate("/mainhome");
+                setActiveLink("home");
+              }}
               className={activeLink === "home" ? "active" : ""}
             >
               Home
@@ -37,10 +43,10 @@ function Home() {
               className={activeLink === "about" ? "active" : ""}
             >
               About
-            </Nav.Link>
+            </Nav.Link>*/}
             <Nav.Link
-              onClick={() => setActiveLink("contact")}
-              className={activeLink === "contact" ? "active" : ""}
+              onClick={() => navigate("/contact")}
+              // className={activeLink === "contact" ? "active" : ""}
             >
               Contact
             </Nav.Link>
@@ -75,17 +81,19 @@ function Home() {
 
 export default Home;
 const Wrapper = Styled.div`
-  
+
+     
     .outlet-container{
        display:flex;
        min-width:100%;
+       
     }
     .outlet-partial{
       margin-top:100px;
       margin-left:17rem;
       margin-right:1.5rem;
       width:100%;
-      overflow:auto;
+      
       
     }
     .outlet-full-width{
@@ -93,11 +101,11 @@ const Wrapper = Styled.div`
       margin-left:5px;
       margin-right:20px;
       width:100%;
-      overflow:auto;
+      
     }
 
     .navbar{
-      background:#fff !important;
+      background:#f4f7fe !important;
       
     }
 
@@ -106,17 +114,22 @@ const Wrapper = Styled.div`
       /* background:#fff; */
       z-index:5;
     }
+    .nav-link:first-child{
+      border:none;
+    }
 
     .nav-link{
       color:black;
-      
+       border:1px solid #6F7CED;
       width:100px;
+      margin-left:10px;
       text-align:center;
       /* padding:10px 50px; */
       border-radius:12px;
 
       @media(max-width:991px){
-       width:100%;
+       width:95%;
+       border:none;
       }
 
     }
@@ -137,8 +150,9 @@ const Wrapper = Styled.div`
       }
     } */
     .logo{
-      width: 23px;
-    height: 27px;
+      width: 80px;
+    height: 50px;
+    background-size:contain;
 }
     
 
@@ -146,5 +160,7 @@ const Wrapper = Styled.div`
     .ctr{
       overflow-x:auto;
     }
-   
+   .navbar-toggler:focus{
+    box-shadow:none;
+   }
 `;

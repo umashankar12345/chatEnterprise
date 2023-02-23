@@ -52,7 +52,7 @@ function NewYorkTime() {
       <div className="main-container">
         <div className="d-flex justify-content-between align-items-center mb-2">
           <h3 className="fw-bold">Your Enterprise's Users</h3>
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div className="btn-group" role="group" aria-label="Basic example">
             <button
               type="button"
               className={

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Styled from "styled-components";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../Header";
@@ -17,6 +17,7 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
   const { activeSidebar } = useSelector((state) => state.appInfo);
   const [sidebarLinks, setSidebarLinks] = useState(enterpriseLinks);
   const dispatch = useDispatch();
+  const ref = useRef();
   console.log(sidebarLinks);
   const [activeLink, setActiveLink] = useState("");
 
@@ -55,6 +56,23 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
 
     dispatch(updateHeader("projects"));
   }, [activeSidebar]);
+
+  // useEffect(() => {
+  //   const checkIfClickedOutside = (e) => {
+  //     // If the menu is open and the clicked target is not within the menu,
+  //     // then close the menu
+  //     if (hideSidebar && ref.current && !ref.current.contains(e.target)) {
+  //       setHideSidebar(false);
+  //     }
+  //   };
+
+  //   document.addEventListener("mousedown", checkIfClickedOutside);
+
+  //   return () => {
+  //     // Cleanup the event listener
+  //     document.removeEventListener("mousedown", checkIfClickedOutside);
+  //   };
+  // }, [hideSidebar]);
 
   return (
     <>
@@ -103,11 +121,12 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
                       >
                         <item.Icon className=" icons" />
                         <span className="ms-2">{item.name}</span>
+                        {item?.Icon2 && <item.Icon2 className=" icons" />}
                       </Link>
                     </div>
                   );
                 })}
-              <div className="d-flex justify-content-center">
+              {/* <div className="d-flex justify-content-center">
                 <button
                   className="btn-logout"
                   onClick={() => {
@@ -117,7 +136,7 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
                 >
                   Logout
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -127,7 +146,7 @@ function Sidebar({ hideSidebar, setHideSidebar }) {
 }
 const Navigation = Styled.div`
  position:fixed;
- 
+ z-index:120;
  .c-transaction{
   width:220px;
   display:flex;
@@ -167,7 +186,7 @@ background-image: linear-gradient(327deg, #d8bd48 0%, #16A085 100%); */
  background:#fff;
  border-right: 1px solid rgba(28, 43, 72, 0.1);
 border-radius: 20px 0px 0px 0px;
- 
+
 
  }
 

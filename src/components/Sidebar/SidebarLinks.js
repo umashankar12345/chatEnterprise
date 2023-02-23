@@ -16,6 +16,11 @@ const MyTransaction= ()=>{
     <img src={require("../../assets/icons/transaction.png")} className="me-2"/>
   )
 }
+const Down= ()=>{
+  return (
+    <img src={require("../../assets/icons/down.png")} className="ms-2"/>
+  )
+}
 
 
 export const enterpriseLinks= [
@@ -33,8 +38,9 @@ export const enterpriseLinks= [
   // },
   {
     path: "/enterprise/mytransactions",
-    name: "My Transactions",
+    name: `My Transactions`,
     Icon: MyTransaction,
+    Icon2:Down
   },
   {
     path: "/enterprise/settings",

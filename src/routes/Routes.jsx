@@ -8,7 +8,27 @@ import Carousel from "../pages/common/Carousel";
 import Home2 from "../pages/common/Home2";
 
 //enterprise imports
+const EnterpriseForgotPassword = lazy(() =>
+  import("../pages/common/ForgotPassword")
+);
+const EnterpriseResetPassword = lazy(() =>
+  import("../pages/common/ResetPassword")
+);
+const EnterpriseEmailVerification = lazy(() =>
+  import("../pages/common/EmailVerification")
+);
+const EnterpriseContact = lazy(() => import("../pages/common/Contact"));
+const EnterpriseMainScreenHome = lazy(() =>
+  import("../pages/common/EnterpriseHome")
+);
 const EnterpriseHome = lazy(() => import("../pages/enterprise/home/Home"));
+
+const EnterpriseAccount = lazy(() =>
+  import("../pages/enterprise/account/Account")
+);
+const EnterpriseEditAccount = lazy(() =>
+  import("../pages/enterprise/account/EditAccount")
+);
 const EnterpriseSettings = lazy(() =>
   import("../pages/enterprise/setting/Setting")
 );
@@ -28,9 +48,20 @@ function routes() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />}>
-            {/* <Route index element={<Carousel />} /> */}
+            <Route index element={<EnterpriseMainScreenHome />} />
             <Route path="login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="forgotpassword"
+              element={<EnterpriseForgotPassword />}
+            />
+            <Route
+              path="emailverification"
+              element={<EnterpriseEmailVerification />}
+            />
+            <Route path="resetpassword" element={<EnterpriseResetPassword />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="contact" element={<EnterpriseContact />} />
+            <Route path="mainhome" element={<EnterpriseMainScreenHome />} />
           </Route>
 
           <Route
@@ -58,6 +89,8 @@ function routes() {
                 }
               />
               <Route path="settings" element={<EnterpriseSettings />} />
+              <Route path="account" element={<EnterpriseAccount />} />
+              <Route path="editaccount" element={<EnterpriseEditAccount />} />
               <Route
                 path="mytransactions"
                 element={<EnterpriseMyTransactions />}

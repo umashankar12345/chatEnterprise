@@ -138,6 +138,7 @@ function Signup() {
                   name="uname"
                   required
                 />
+                <div className="required">*</div>
               </div>
               <div className="input-box">
                 <FaUser className="icon" />
@@ -157,6 +158,7 @@ function Signup() {
                 name="uname"
                 required
               />
+              <div className="required">*</div>
             </div>
             <div className="input-box">
               <MdCall className="icon" />
@@ -175,6 +177,7 @@ function Signup() {
                 name="uname"
                 required
               />
+              <div className="required">*</div>
             </div>
             <div className="input-box">
               <img
@@ -268,7 +271,12 @@ function Signup() {
           </div>
 
           <button className="cta-btn">Signup</button>
-          <div className="text-center">have an account Login here?</div>
+          <div
+            className="text-center cursor-pointer"
+            onClick={() => navigate("/login")}
+          >
+            have an account Login here?
+          </div>
         </form>
       </div>
       <div className="text-center text-mute mt-2 pb-4">
@@ -286,6 +294,8 @@ const Wrapper = Styled.div`
 a {
   text-decoration: none;
 }
+
+
 
 .card {
   font-family: sans-serif;
@@ -393,6 +403,12 @@ input:focus{
 }
 .input-box{
   position:relative;
+}
+.required{
+  color:red;
+  position:absolute;
+  top:10px;
+  right:5px;
 }
 .icon{
   position:absolute;

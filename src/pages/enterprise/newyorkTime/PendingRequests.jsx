@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import Styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
 import Card from "../../../components/modals/NewYorkTime/MemberCard";
+import AddMemberModal from "../../../components/modals/NewYorkTime/AddMember";
+
 function NewYorkTime() {
   const [activeButton, setActiveButton] = useState("active");
+  const [showAddMemberModal, setShowAddMemberModal] = useState(false);
+
   return (
     <Wrapper>
+      {showAddMemberModal && (
+        <AddMemberModal
+          show={showAddMemberModal}
+          setShow={setShowAddMemberModal}
+        />
+      )}
       <div className="top-header d-flex justify-content-between align-items-center">
         <div>
           <h3 className="fw-bold">Team Management</h3>
@@ -22,7 +32,12 @@ function NewYorkTime() {
           >
             Pending Requests
           </button>
-          <button className="btn-team">Add User</button>
+          <button
+            className="btn-team"
+            onClick={() => setShowAddMemberModal(true)}
+          >
+            Add User
+          </button>
         </div>
       </div>
       <div className="main-container">

@@ -121,17 +121,24 @@ function LoginForm() {
         <form>
           <h2 className="title text-capitalize">
             {" "}
-            Welcome back to Transaction Hub 👋
+            Reset Your Password Transaction Hub 👋
           </h2>
-          <p className="subtitle mt-2">Enter your Details Below</p>
+          <p className="subtitle mt-2">Yahoo! Now Reset Your password</p>
 
           <div className="email-login">
             <div className="input-box">
-              <MdEmail className="icon" />
+              <img
+                className="icon"
+                src={require("../../assets/icons/keyblue.png")}
+              />
+              <img
+                className="icon3"
+                src={require("../../assets/icons/eyeblue.png")}
+              />
               <input
                 type="text"
-                placeholder="Enter Email"
-                name="uname"
+                placeholder="Enter Password"
+                name="psw"
                 required
               />
             </div>
@@ -147,7 +154,7 @@ function LoginForm() {
               />
               <input
                 type="password"
-                placeholder="Enter Password"
+                placeholder="Confirm Password"
                 name="psw"
                 required
               />
@@ -161,18 +168,9 @@ function LoginForm() {
               Forgot password?
             </a>
           </div>
-          <button
-            className="cta-btn"
-            onClick={() => navigate("/enterprise/home")}
-          >
-            Log In
+          <button className="cta-btn" onClick={() => navigate("/login")}>
+            Reset Password
           </button>
-          <div
-            className="text-center cursor-pointer"
-            onClick={() => navigate("/signup")}
-          >
-            don't have an account Register here?
-          </div>
         </form>
       </div>
       <div className="text-center text-mute mt-2 pb-4">
@@ -310,6 +308,15 @@ input:focus{
   position:absolute;
   color: #6F7CED;
   top:20px;
+  right:5px;
+  font-size:25px;
+  
+}
+
+.icon3{
+  position:absolute;
+  color: #6F7CED;
+  top:25px;
   right:5px;
   font-size:25px;
   

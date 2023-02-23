@@ -254,34 +254,31 @@ input:focus{
 }
 
 .status-green{
-    width: 150px;
+   color:#3fc8aa;
+border-radius: 12px;
+    background:#efeee3;
+    width: 120px;
    height: 23px;
-background: #ecf9f7;
-color:#3fc8aa;
 border-radius: 12px;
 display:flex;
 align-items:center;
-justify-content:space-between;
-padding:20px;
-margin-top:10px;
+justify-content:space-around;
+padding:10px 0px;
 
 }
 .status-yellow{
-    width: 84px;
-   height: 23px;
-   display:flex;
 
 color:#D6AB16;
 border-radius: 12px;
     background:#efeee3;
-    width: 150px;
+    width: 120px;
    height: 23px;
 border-radius: 12px;
 display:flex;
 align-items:center;
-justify-content:space-between;
-padding:20px;
-margin-top:10px;
+justify-content:space-around;
+padding:10px 0px;
+
 }
 .status-circle-green{
     width: 18px;

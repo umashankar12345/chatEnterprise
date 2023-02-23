@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import styled from "styled-components";
-// import "./ApproveMember.scss";
-function ApproveMember({ show, setShow }) {
+// import "./addNewOffice.scss";
+function EditOffice({ show, setShow }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -19,7 +19,9 @@ function ApproveMember({ show, setShow }) {
         <Wrapper>
           <Modal.Header closeButton={false}>
             <div>
-              <Modal.Title className="fw-bolder">Member Approval</Modal.Title>
+              <Modal.Title className="fw-bolder">
+                Edit Office Address
+              </Modal.Title>
               <div className="h6 text-muted">Fill the Details Below</div>
             </div>
             <img
@@ -33,58 +35,91 @@ function ApproveMember({ show, setShow }) {
             <Form>
               <Form.Group
                 className="mb-3"
-                controlId="ApproveMemberForm.ControlInput1"
+                controlId="AddNewOfficeForm.ControlInput1"
               >
-                <Form.Control
-                  type="email"
-                  placeholder="Name"
-                  value="smith"
-                  className="mb-2 p-2 shadow-none"
-                  autoFocus
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="ApproveMemberForm.ControlInput1"
-              >
+                <Form.Label>Title</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Email"
-                  value="john.smith@domain.com"
+                  value="2118 Thornridge Cir. Syracuse4"
                   className="mb-2 p-2 shadow-none"
                   autoFocus
                 />
               </Form.Group>
               <Form.Group
                 className="mb-3"
-                controlId="ApproveMemberForm.ControlInput1"
+                controlId="AddNewOfficeForm.ControlInput1"
               >
+                <Form.Label>Address1</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Email"
-                  value="+0 123 456 78 90"
+                  value="2118 Thornridge Cir. Syracuse4"
                   className="mb-2 p-2 shadow-none"
                   autoFocus
                 />
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="ApproveMemberForm.ControlTextarea1"
-              >
-                <Form.Select
-                  aria-label="Default select example"
-                  className="p-2 shadow-none"
+
+              <div className="d-flex justify-content-between mb-2">
+                <Form.Group
+                  className="mb-3"
+                  controlId="AddNewOfficeForm.ControlInput1"
                 >
-                  <option>Select Office</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
+                  <Form.Label>State </Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Email"
+                    value="California"
+                    className="mb-2 p-2 shadow-none"
+                    autoFocus
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3"
+                  controlId="AddNewOfficeForm.ControlInput1"
+                >
+                  <Form.Label>ZipCode</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Email"
+                    value="58693"
+                    className="mb-2 p-2 shadow-none"
+                    autoFocus
+                  />
+                </Form.Group>
+              </div>
+
+              <Form.Group
+                className="mb-3"
+                controlId="AddNewOfficeForm.ControlInput1"
+              >
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  value="Los Angeles"
+                  className="mb-2 p-2 shadow-none"
+                  autoFocus
+                />
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="AddNewOfficeForm.ControlInput1"
+              >
+                <Form.Label>Country</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  value="America"
+                  className="mb-2 p-2 shadow-none"
+                  autoFocus
+                />
               </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button className="btn-invite " onClick={handleClose}>
+            <Button className="btn-normal " onClick={handleClose}>
               Update
             </Button>
           </Modal.Footer>
@@ -125,4 +160,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default ApproveMember;
+export default EditOffice;

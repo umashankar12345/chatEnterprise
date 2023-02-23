@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header";
@@ -6,6 +6,7 @@ import Styled from "styled-components";
 
 function Home() {
   const [hideSidebar, setHideSidebar] = useState(false);
+
   return (
     <Wrapper>
       <div className="outlet-container">
@@ -27,7 +28,7 @@ const Wrapper = Styled.div`
 
     .outlet-container{
        display:flex;
-       width:100%;
+       
        
 
     }
@@ -35,8 +36,8 @@ const Wrapper = Styled.div`
       margin-top:100px;
       margin-left:17rem;
       margin-right:1.5rem;
-      width:calc(100% - 264px);
-
+      width:calc(100% - 274px);
+      
       /* overflow:auto; */
       
     }

@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 // import { Alert } from "reactstrap";
 import Styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { MdHelp, MdOutlineWavingHand, MdEmail } from "react-icons/md";
+import { MdHelp, MdOutlineWavingHand, MdEmail, MdCall } from "react-icons/md";
 import {
   superAdmin,
   admin,
@@ -36,143 +36,45 @@ function LoginForm() {
     // }
   }, []);
 
-  async function UserLogin(e) {
-    e.preventDefault();
-    //  if( validate(email,password)){
-
-    setformErrors(validate(email, password));
-    if (validate(email, password)) return;
-    console.log("validated");
-    setisSubmit(true);
-    const error = {};
-    try {
-      const response = await Axios.post("/users/login", { email, password });
-      console.log(response);
-      const data = response.data.user;
-      const { _id, FirstName } = response.data.user;
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.token);
-      console.log(data);
-      if (data) {
-        // var login_obj = {
-        //   _id: data.user._id,
-        //   role: data.user.role,
-        //   email: data.user.email,
-        // };
-
-        // localStorage.setItem("token", JSON.stringify(login_obj));
-        // alert("login sccessfull")
-
-        if (data.role === "author") {
-          dispatch(author());
-          navigate("/author");
-          // window.location.href("/admin/dashboard")
-        } else if (data.role === "reviewer") {
-          console.log("inside user");
-          dispatch(reviewer());
-          navigate("/reviewer");
-        } else {
-          // history.push("/admin/projectlist");
-          navigate("/admin/");
-        }
-        // window.location.href ="/";
-      }
-      //  }
-      else {
-        // alert("please check your username and password")
-        const error = {};
-        error.msg = "please check your credentials";
-        setseconderror(error);
-        setvisible(true);
-      }
-    } catch (error) {
-      console.log(error);
-      const err = {};
-      err.msg = "please check your credentials or register";
-      setseconderror(err);
-    }
-  }
-
   const updateSelect = (e) => {
     console.log(e.target.name, e.target.value);
     setRole(e.target.value);
   };
 
-  const validate = (email, password) => {
-    const errors = {};
-    const regex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/;
-    if (!email) {
-      errors.email = "email is required!";
-    } else if (!regex.test(email)) {
-      errors.email = "Please enter valid email!";
-    }
-    if (!password) {
-      errors.password = "password is required!";
-    }
-    if (Object.keys(errors).length < 1) {
-      return false;
-    }
-    return errors;
-  };
   return (
     <Wrapper>
-      <div className="card">
+      <div className="card ">
         <form>
+          <div className="mb-2 cursor-pointer" onClick={() => navigate(-1)}>
+            <img src={require("../../assets/icons/back.png")} alt="back" />
+          </div>
           <h2 className="title text-capitalize">
             {" "}
-            Welcome back to Transaction Hub 👋
+            forgot your password Transaction Hub 👋
           </h2>
-          <p className="subtitle mt-2">Enter your Details Below</p>
+          <p className="subtitle mt-2">
+            Enter your registered email or phone number below to receive
+            password reset instruction
+          </p>
 
           <div className="email-login">
             <div className="input-box">
               <MdEmail className="icon" />
+              <MdCall className="icon2" />
               <input
                 type="text"
-                placeholder="Enter Email"
+                placeholder="Enter Email or Phone"
                 name="uname"
                 required
               />
             </div>
-
-            <div className="input-box">
-              <img
-                className="icon"
-                src={require("../../assets/icons/key.png")}
-              />
-              <img
-                className="icon2"
-                src={require("../../assets/icons/eye.png")}
-              />
-              <input
-                type="password"
-                placeholder="Enter Password"
-                name="psw"
-                required
-              />
-            </div>
-          </div>
-          <div>
-            <a
-              className="forget-pass"
-              onClick={() => navigate("/forgotpassword")}
-            >
-              Forgot password?
-            </a>
           </div>
           <button
             className="cta-btn"
-            onClick={() => navigate("/enterprise/home")}
+            onClick={() => navigate("/emailverification")}
           >
-            Log In
+            Send
           </button>
-          <div
-            className="text-center cursor-pointer"
-            onClick={() => navigate("/signup")}
-          >
-            don't have an account Register here?
-          </div>
         </form>
       </div>
       <div className="text-center text-mute mt-2 pb-4">
@@ -302,15 +204,15 @@ input:focus{
   position:absolute;
   color: #6F7CED;
   top:20px;
-  left:5px;
+  left:10px;
   font-size:25px;
   
 }
 .icon2{
   position:absolute;
   color: #6F7CED;
-  top:20px;
-  right:5px;
+  top:25px;
+  left:1px;
   font-size:25px;
   
 }

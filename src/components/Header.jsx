@@ -44,9 +44,8 @@ function Header({ hideSidebar, setHideSidebar }) {
               <img
                 src={require("../assets/icons/logo.png")}
                 alt="logo"
-                className="logo"
+                className="logo "
               />
-              Transaction Hub
             </div>
           </div>
 
@@ -60,40 +59,44 @@ function Header({ hideSidebar, setHideSidebar }) {
             </div>
 
             <span className="me-2 text-mute">Jennifer Ras</span>
-            <img
-              src={require("../assets/images/user-img.png")}
-              alt="profile pic"
-              className="profile-pic me-1"
-              onClick={() => setSettingMenu(!settingMenu)}
-            />
-            <img
-              src={require("../assets/icons/arrow-down.png")}
-              className="me-3"
-            />
+            <div onClick={() => setSettingMenu(!settingMenu)}>
+              <img
+                src={require("../assets/images/user-img.png")}
+                alt="profile pic"
+                className="profile-pic me-1"
+              />
+              <img
+                src={require("../assets/icons/arrow-down.png")}
+                className="me-3"
+              />
+            </div>
+
             <div className="filter-container " ref={ref}>
               {/* <FaFilter
                 className="icon filter-icon"
                 onClick={() => setFilterMenu(!filterMenu)}
               /> */}
               <ul className={settingMenu ? " filter-menu" : "hide-menu"}>
+                <div className="triangular-box"></div>
                 <li
                   className="filter-menu-item"
                   onClick={() => {
-                    navigate("/accountsetting");
+                    navigate("/enterprise/account");
                     setSettingMenu(!settingMenu);
                   }}
                 >
-                  <MdSettings /> Account Settings
+                  {/* <MdSettings /> Account  */}
+                  Account
                 </li>
                 <li
                   className="filter-menu-item"
                   onClick={() => {
-                    navigate("/changepassword");
+                    navigate("/mainhome");
                     setSettingMenu(!settingMenu);
                   }}
                 >
-                  <RiLockPasswordFill />
-                  ChangePassword
+                  {/* <RiLockPasswordFill /> */}
+                  Logout
                 </li>
               </ul>
             </div>
@@ -169,16 +172,16 @@ border-radius: 10px 0px 0px 0px;
   justify-content:center;
   align-items:center;
   background-color:#fff;
-  border:2px solid #A9A9A9	;
-  height:100px;
-  bottom:-6.5rem;
-  left:-8rem;
+  border:2px solid #f3f4f6	;
+  color:#777;
+ 
+  bottom:-9.5rem;
+  left:2rem;
   border-radius:10px;
   padding:0px 10px;
   display:flex;
   flex-direction:column;
-  background-color:black;
-  color:white;
+ 
 }
 .hide-menu{
   display:none;
@@ -193,30 +196,47 @@ border-radius: 10px 0px 0px 0px;
 .filter-menu-item{
   width:100%;
   list-style-type:none;
-  padding:5px;
+  
+  padding:10px 40px;
+  border-bottom:1px solid #f3f4f6;
   cursor:pointer;
   
-  margin-bottom:10px;
+  margin-top:5px;
+  margin-bottom:5px;
  
 
 }
-.filter-menu-item:hover{
+.filter-menu-item:last-child{
+  border-bottom:none;
+}
+/* .filter-menu-item:hover{
   background-color:blue;
   color:white;
-}
+} */
 .notification{
   position:relative;
 }
 .notification-top{
-  height:20px;
-  width:20px;
+  height:25px;
+  width:25px;
   border-radius:50%;
   position:absolute;
   text-align:center;
   top:-10px;
-  right:8px;
+  right:6px;
   background-color:red;
   color:white
+}
+
+.triangular-box{
+  position:absolute;
+  width:20px;
+  height:20px;
+  transform:rotate(45deg);
+  top:-10px;
+  left:50%;
+  background-color:white;
+
 }
 
 `;
